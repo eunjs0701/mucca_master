@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ko-kr">
+  <head>
+  	<meta charset="UTF-8">
+    <title>Search</title>
+	<script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+	<script type="text/javascript" src="auth.js"></script>
+	<script type="text/javascript" src="search.js"></script>
+<!--     // <script src="auth.js"></script> -->
+<!--     // <script src="search.js"></script> -->
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+  </head>
+  <body>
+    <div id="buttons">
+      <label> <input id="query" value='빅뱅' type="text"/><button id="search-button" disabled onclick="search()">Search</button></label>
+    </div>
+    <div id="search-container">
+    </div>
+
+	<div id="search-container-img">
+    </div>
+
+    <iframe width="420" height="315" src="" id="main_frame"></iframe>    
+
+
+  </body>
+</html>			

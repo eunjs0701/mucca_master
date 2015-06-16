@@ -1,0 +1,211 @@
+<!-- <h1>New music</h1>
+
+<%= render 'form' %>
+
+<%= link_to 'Back', musics_path %> -->
+
+
+<html lang="ko-kr">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Mucca</title>	
+	
+	<%= javascript_include_tag "js/jquery-1.11.3.min.js" -%>	
+	<%= javascript_include_tag "js/bootstrap.min.js" -%>		
+	<%= javascript_include_tag "js/modernizr.custom.79639" -%>	
+	<%= javascript_include_tag "js/colorBar" -%>		
+	<%= javascript_include_tag "js/friend" -%>
+	<%= javascript_include_tag "js/auth" -%>
+	<%= javascript_include_tag "js/search" -%>
+    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
+
+	<%= stylesheet_link_tag "css/font-awesome.min", :media => "all" %>
+	<%= stylesheet_link_tag "css/demo", :media => "all" %>
+	<%= stylesheet_link_tag "css/pfold", :media => "all" %>
+	<%= stylesheet_link_tag "css/custom1", :media => "all" %>
+	<%= stylesheet_link_tag "css/givecard", :media => "all" %>	
+	<%= stylesheet_link_tag "css/friend", :media => "all" %>
+
+<body class="background">
+
+	<div class ='header'>
+		<%= image_tag "img_upLine.png" , class: "mini-logo", alt:"upLine" %>
+	</div>
+	
+	<div class="container">
+		<nav class="navbar navbar-control" role="navigation">
+			<ul class="nav navbar-nav navbar-right">
+				<li class="nav-info">누구누구 님</li>
+				<li class="nav-info">로그아웃</li>
+			</ul>
+		</nav>
+
+		<div class="row clearfix">
+			<div class="col-xs-4 column">
+
+				<%= image_tag "img_logo.png" , class: "mini-logo", alt:"logo" %>
+<!-- 				<img class="mini-logo" src ="img_logo.png" alt ="logo"> -->
+
+
+				<button class="b-btn menu-btn">카드 주고받기</button>
+				<a href="collection.html"><button class="b-btn menu-btn btn-for-down">나의 컬렉션</button></a>
+				<button class="b-btn menu-btn btn-for-down flip">친구 컬렉션</button>
+				<div class="panel">	
+					<div class="form-group" id="search">
+						<input type="text" class="form-control" id="myForm" placeholder="&#xF002; 친구를 검색해 보세요." style="font-family:Arial, FontAwesome" />
+					</div>
+					<div class="user">
+						김지목
+					</div>
+					<div class="user">				
+						류기현
+					</div>
+					<div class="user">
+						현지인
+					</div>
+					<div class="user last-one">
+						표세원
+					</div>
+				</div>
+
+			</div>
+			<div class="col-xs-6 column">
+
+				<div class="give-card">
+					<%= image_tag "img_label_1.png" , class: "color-bar", alt:"color-bar" %>
+					<%= image_tag "img_label_1_back.png" , class: "color-bar-back", alt:"color-bar" %>
+
+					<div class="movie-sec">
+						
+						<input class="find" id="query" value='빅뱅' type="text" placeholder= "&#xF002; 가수 이름이나 노래 제목을 검색해 보세요." style="font-family:Arial, FontAwesome" onkeydown="javascript:if(event.keyCode==13){search()}">
+
+<!-- 						<div> -->
+						<iframe width="480" height="280" src="" id="main_frame" src=""></iframe>
+
+						<div class="search-sec fade in">
+							<ul type="none">
+								<li class="search-list">
+									<div class="search-thumb">
+										<%= image_tag "img_thumb_1.png" , class: "search-image", alt:"thumbnail" %>
+									</div>
+									<div class="search-info">
+										[EXID신곡 AH-YEAH] 
+									</div>
+								</li>
+								<li class="search-list">
+									<div class="search-thumb">
+										<%= image_tag "img_thumb_1.png" , class: "search-image", alt:"thumbnail" %>
+									</div>
+									<div class="search-info">
+										[EXID신곡 AH-YEAH] 
+									</div>
+								</li>
+								<li class="search-list">
+									<div class="search-thumb">
+										<%= image_tag "img_thumb_1.png" , class: "search-image", alt:"thumbnail" %>
+									</div>
+									<div class="search-info">
+										[EXID신곡 AH-YEAH] 
+									</div>
+								</li>
+							</ul>
+						</div>	
+					</div>
+
+						<hr>
+						<div class="letter-sec">
+							<textarea class="letter" placeholder="노래와 관련된 내용을 입력 해 주세요.&#10;노래에 대한 개인적인 느낌도 좋고 가수에 대한 특별한 이야기도 좋아요."></textarea>
+						</div>
+					</div>
+
+
+					<div class="send">				
+						<button class="b-btn send-btn">보내기</button>					
+					</div>
+				</div>
+
+
+				<div id="wrapperForForm">
+ 					<%= form_for(@music) do |f| %>
+					  <% if @music.errors.any? %>
+					    <div id="error_explanation">
+					      <h2><%= pluralize(@music.errors.count, "error") %> prohibited this music from being saved:</h2>
+
+					      <ul>
+					      <% @music.errors.full_messages.each do |msg| %>
+					        <li><%= msg %></li>
+					      <% end %>
+					      </ul>
+					    </div>
+					  <% end %>
+
+					  <div class="field">
+					    <%= f.label :title %><br>
+					    <%= f.text_field :title %>
+					  </div>
+					  <div class="field">
+					    <%= f.label :description %><br>
+					    <%= f.text_area :description %>
+					  </div>
+					  <div class="field">
+					    <%= f.label :musician %><br>
+					    <%= f.text_field :musician %>
+					  </div>
+					  <div class="field">
+					    <%= f.label :imageUrl %><br>
+					    <%= f.text_field :imageUrl %>
+					  </div>
+					  <div class="field">
+					    <%= f.label :videoUrl %><br>
+					    <%= f.text_field :videoUrl %>
+					  </div>
+					  <div class="field">
+					    <%= f.label :color %><br>
+					    <%= f.number_field :color %>
+					  </div>
+					  <div class="actions">
+						<%= f.submit %>
+					  </div>					  
+ 					<% end %>
+				</div>
+
+				<script>
+					$('.send-btn').click(function(){
+						$("input[name='commit']").click();
+					});
+					document.getElementById('wrapperForForm').style.display = "none";
+				</script>	
+
+				<div class="col-xs-1 column">
+					<div class="color-sec">
+						
+						<div class="outline">
+							<div class="color-ball" style="background-color:#F9F6F4" data-color="1" data-hex="#F9F6F4"></div>
+						</div>
+
+						<div class="outline">
+							<div class="color-ball" style="background-color:#E98B9B" data-color="2" data-hex="#E98B9B"></div>
+						</div>
+
+						<div class="outline">
+							<div class="color-ball" style="background-color:#E9AC89" data-color="3" data-hex="#E9AC89"></div>
+						</div>
+
+						<div class="outline">
+							<div class="color-ball" style="background-color:#ECE098" data-color="4" data-hex="#ECE098"></div>
+						</div>
+
+						<div class="outline">
+							<div class="color-ball" style="background-color:#30C6E7" data-color="5" data-hex="#30C6E7"></div>
+						</div>
+
+
+					</div>
+				</div>
+			</div>
+			
+		</div>
+
+	</body>
+	</html>

@@ -1,0 +1,42 @@
+.receive-body{
+	margin-top: 50px;
+}
+
+.card-deco{
+position: absolute;
+  top: 5px;
+  left: 0px;
+  display: block;
+}
+
+.card-btns{
+	display: none;
+}
+
+.receive-color-bar{
+	position: relative;
+	display: block;
+	top: -5px;
+  	left: -5px;
+}
+
+.receive-letter{
+	height: inherit;
+	width: 96%;
+	margin: 10px 10px;
+}
+
+.receive-icon{
+  padding: 5px 10px;
+  font-size: 20px;
+  float: right;
+}
+
+.letter-sec{
+	border-top: 1px solid #eee;
+	margin-top: 20px;
+}
+
+.title-sec{
+	height:30px;
+}

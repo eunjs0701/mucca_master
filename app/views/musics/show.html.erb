@@ -1,0 +1,241 @@
+<html lang="ko-kr">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Mucca</title>	
+
+	<%= javascript_include_tag "js/jquery-1.11.3.min.js" -%>	
+	<%= javascript_include_tag "js/bootstrap.min.js" -%>
+	<%= javascript_include_tag "js/modernizr.custom.79639" -%>
+	<%= javascript_include_tag "js/friend" -%>
+
+	<%= stylesheet_link_tag "css/font-awesome.min", :media => "all" %>
+	<%= stylesheet_link_tag "css/demo", :media => "all" %>
+	<%= stylesheet_link_tag "css/pfold", :media => "all" %>
+	<%= stylesheet_link_tag "css/custom1", :media => "all" %>
+	<%= stylesheet_link_tag "css/bootstrap.min.css", :media => "all" %>	
+	<%= stylesheet_link_tag "css/givecard", :media => "all" %>	
+	<%= stylesheet_link_tag "css/receivecard", :media => "all" %>	
+	<%= stylesheet_link_tag "css/friend", :media => "all" %>
+
+<body>
+
+	<div class ='header'>
+		<%= image_tag "img_upLine.png" , alt:"upLine" %>		
+	</div>
+
+	<div class="container">
+		<div class="row clearfix">
+			<nav class="navbar navbar-control" role="navigation">
+				<ul class="nav navbar-nav navbar-right">
+					<li class="nav-info">누구누구 님</li>
+					<li class="nav-info">로그아웃</li>
+				</ul>
+			</nav>
+			<div class="col-xs-4 column">
+				<%= image_tag "img_logo.png", class: "mini-logo" , alt:"logo" %>
+				<button class="b-btn menu-btn">카드 주고받기</button>
+
+				<a href="collection.html"><button class="b-btn menu-btn btn-for-down">나의 컬렉션</button></a>
+
+				<button class="b-btn menu-btn btn-for-down flip">친구 컬렉션</button>
+				
+				<div class="panel">	
+					<div class="form-group" id="search">
+	                	<input type="text" class="form-control" placeholder="&#xF002; 친구를 검색해 보세요." style="font-family:Arial, FontAwesome"/>
+	                </div>
+					
+						<div class="user">
+							김지목
+						</div>
+						<div class="user">				
+							류기현
+						</div>
+						<div class="user">
+							현지인
+						</div>
+						<div class="user last-one">
+							표세원
+						</div>
+
+					</div>
+
+			</div>
+			<div class="col-xs-6 column receive-body">
+				<section class="main demo-1">
+				
+				<div id="uc-container" class="uc-container closed-card">
+					<div class="uc-initial-content">
+						<!-- custom content -->
+
+						<%= image_tag "img_cardDeco.png" , class: "card-deco", alt:"card-deco" %>
+						<%= image_tag "img_label_1.png", class: "receive-color-bar" , alt:"color-bar" %>
+
+						<span class="clickme">Click me</span>
+					</div>
+					<div class="uc-final-content">
+						<!-- custom content -->
+						<div class="scrollwrap recieve-card">
+						<div class="title-sec">
+						</div>
+						<div class="movie-sec">
+							<iframe width="100%" height="300" src=<%= @music.videoUrl %> ></iframe>
+						</div>
+						<hr>
+						<div class="letter-sec">
+							<textarea class="letter receive-letter">  <%= @music.title %> </textarea>
+						</div>
+
+
+						</div>
+						<span class="close">x</span>
+					</div>
+				</div>
+				<p class="info"><strong>음악이</strong> 도착했어요!</p>
+			</section>
+
+
+					<div class="card-btns"> 
+						<a href="collection.html"><button class="receive-btn b-btn">보관하기
+						</button></a>
+						<a href="givecard.html"><button class="b-btn receive-btn">날리기
+						</button></a>
+						<button class="b-btn receive-btn receive-icon"><i class="fa fa-trash-o"></i></button>
+					</div>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+				<%= javascript_include_tag "js/jquery.pfold" -%>	
+
+				<script type="text/javascript">
+				$(function() {
+
+					var $container = $( '#uc-container' ),
+					pfold = $( '#uc-container' ).pfold({
+						easing : 'ease-in-out',
+						folds : 2,
+						folddirection : ['right','top']
+					});
+
+					$container.find( 'span.clickme' ).on( 'click', function() {
+						$('.card-deco').css('display', 'none');
+						$('.receive-color-bar').css('display', 'none');
+						$('.card-btns').css('display', 'block');
+						$('.uc-initial-content').css('background', 'transparent');
+
+						pfold.unfold();
+
+					} ).end().find( 'span.close' ).on( 'click', function() {
+						pfold.fold();
+						$('.card-deco').css('display', 'block');
+						$('.receive-color-bar').css('display', 'block');
+						$('.card-btns').css('display', 'none');
+						$('.uc-initial-content').css('background', 'white');
+
+
+					} );
+
+				});
+				</script>
+
+
+	<!-- div class="container">
+		<div class="row clearfix">
+			<div class="col-md-4 column">
+				
+				<button class="menu-btn">카드 주고받기</button>
+
+				<a href="collection.html"><button class="menu-btn btn-for-down">나의 컬렉션</button></a>
+
+				<button class="menu-btn btn-for-down flip">친구 컬렉션</button>
+				
+				<div class="panel">	
+					<div class="form-group" id="search">
+	                	<input type="text" class="form-control" />
+	                </div>
+					
+					<div>
+						<div>
+							<p id="user">김지목</p>
+						</div>
+						<div>				
+							<p id="user">류기현</p>
+						</div>
+						<div>
+							<p id="user">현지인</p>
+						</div>
+						<div>
+							<p id="user">표세원</p>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-6 column">
+				<section class="main demo-1">
+				
+				<div id="uc-container" class="uc-container closed-card">
+					<div class="uc-initial-content"> -->
+						<!-- custom content -->
+					
+						<!-- <img class="card-deco" src="img/img_cardDeco.png" alt="card-deco">
+						<img class="receive-color-bar" src="img/img_label_1.png" alt="color-bar">
+
+						<span class="clickme">Click me</span>
+					</div>
+					<div class="uc-final-content"> -->
+						<!-- custom content -->
+						<!-- <div class="scrollwrap recieve-card">
+							<div class="movie-sec">
+						<video width="100%" height="300" controls>
+							<source src="img/AlvaNoto-Xerrox.mp4" type="video/mp4">
+
+								Your browser does not support the video tag.
+							</video>
+						</div>
+						<div class="letter-sec">
+							<textarea class="letter">hello world!</textarea>
+						</div>
+
+
+						</div>
+						<span class="close">x</span>
+					</div>
+				</div>
+				<p class="info"><strong>음악이</strong> 도착했어요!</p>
+			</section>
+
+				<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+				<script type="text/javascript" src="js/jquery.pfold.js"></script>
+				<script type="text/javascript">
+				$(function() {
+
+					var $container = $( '#uc-container' ),
+					pfold = $( '#uc-container' ).pfold({
+						easing : 'ease-in-out',
+						folds : 2,
+						folddirection : ['right','top']
+					});
+
+					$container.find( 'span.clickme' ).on( 'click', function() {
+
+						pfold.unfold();
+
+					} ).end().find( 'span.close' ).on( 'click', function() {
+
+						pfold.fold();
+
+					} );
+
+				});
+				</script>
+						<a href="collection.html"><button class="receive-btn">보관하기
+						</button></a>
+						<a href="givecard.html"><button class="receive-btn">날리기
+						</button></a>
+			</div>
+		</div> -->
+	</body>
+</html>
